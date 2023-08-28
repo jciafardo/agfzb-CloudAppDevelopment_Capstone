@@ -33,12 +33,12 @@ ALLOWED_HOSTS = ["localhost"]
 # Application definition
 
 INSTALLED_APPS = [
-    '''
-    below ling may cause wacky things to happen 
-    if this is the case remove 'djangoapp' and uncomment 
-    below line 
+
+    #below ling may cause wacky things to happen 
+    #if this is the case remove 'djangoapp' and uncomment 
+    #below line 
     
-    '''
+
     #'djangoapp.apps.DjangoappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'djangoapp'
+    'djangoapp', 
+    'users'
     
 ]
 

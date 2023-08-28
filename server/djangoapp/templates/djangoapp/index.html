@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-    {% load static %}
 <head>
     <meta charset="UTF-8">
-    <title>Dealership Review</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'djangoapp/css/style.css' %}">
+    <title>Dealership Review</title> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -17,9 +15,30 @@
 
     <body>
     <!--Add a nav bar here -->
-    <nav>
-        <button class="btn btn-success test"><a href="/djangoapp/about">About Us</a></button>
-    </nav>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Best Car Dealer</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/djangoapp/about">About</a>
+              </li>
+            </ul>
+            <form class="d-flex pt-3 ml-auto" role="search">
+              <input class="form-control" type="search" placeholder="Username" aria-label="Search">
+              <input class="form-control mx-2" type="search" placeholder="Password" aria-label="Search">
+              <button class="btn btn-primary btn-sm mx-2" type="submit">Login</button>
+              <button class="btn btn-outline-primary btn-sm col-2" type="submit">Sign up</button>
+            </form>
+          </div>
+        </div>
+      </nav>
     <!--Add a dealer table here -->
     <footer>
         <button class="btn btn-success"><a href="/djangoapp/contact">Contact Us !</a></button>
