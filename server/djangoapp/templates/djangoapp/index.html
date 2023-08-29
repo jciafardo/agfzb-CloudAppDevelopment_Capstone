@@ -30,11 +30,22 @@
                 <a class="nav-link" href="/djangoapp/about">About</a>
               </li>
             </ul>
-            <form class="d-flex pt-3 ml-auto" role="search">
-              <input class="form-control" type="search" placeholder="Username" aria-label="Search">
-              <input class="form-control mx-2" type="search" placeholder="Password" aria-label="Search">
-              <button class="btn btn-primary btn-sm mx-2" type="submit">Login</button>
-              <button class="btn btn-outline-primary btn-sm col-2" type="submit">Sign up</button>
+            
+            
+            <form class="d-flex pt-3 ml-auto" role="search" method="post">
+                {% csrf_token %}
+
+                {% if is_auth %}
+                    <button class="btn btn-outline-primary btn-sm col-2" type="submit" name='logout'>Logout</button>
+                {% else %}
+                    <input class="form-control" type="search" placeholder="Username" aria-label="Search" name="username">
+                    <input class="form-control mx-2" type="search" placeholder="Password" aria-label="Search" name="password">
+                    <button class="btn btn-primary btn-sm mx-2" type="submit">Login</button>
+                    <button class="btn btn-outline-primary btn-sm col-2" type="submit">Sign up</button>
+                           
+                {% endif %}
+
+
             </form>
           </div>
         </div>

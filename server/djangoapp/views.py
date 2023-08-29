@@ -9,6 +9,8 @@ from django.contrib import messages
 from datetime import datetime
 import logging
 import json
+from users.views import register, logout_user
+
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -17,16 +19,26 @@ logger = logging.getLogger(__name__)
 # Create your views here.
 
 def index(response):
-    username = response.POST.get('username')
-    password = response.POST.get('password')
-    user = authenticate(response, username=username, password=password)
-    
-    if user is not none:
-        is_auth = True 
-    else:
-        is_auth = False   
+    is_auth = None
+    is_log_out = None
 
-    return render(request, 'djangoapp/index.html', {'is_auth': is_auth})
+    
+    if response.method == 'POST':
+        if 'username' in response.POST or 'password' in response.POST:    
+            
+            if register(response) == True:
+                is_auth = True 
+
+            else:
+                is_auth = False
+
+        if 'logout' in response.POST:
+            logout_user(response)
+            is_auth = False
+            return render(response, 'djangoapp/index.html', {'is_auth': is_auth})
+
+    return render(response, 'djangoapp/index.html', {'is_auth': is_auth})
+    
 
 def static(request):
     return render(request, 'static.html', {})
