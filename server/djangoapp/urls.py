@@ -9,6 +9,8 @@ urlpatterns = [
     # view refers to the view function
     # name the URL
 
+    path('', views.index, name="index"),
+
     path('static', views.static, name='static'),
     
 

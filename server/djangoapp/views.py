@@ -16,6 +16,18 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 
+def index(response):
+    username = response.POST.get('username')
+    password = response.POST.get('password')
+    user = authenticate(response, username=username, password=password)
+    
+    if user is not none:
+        is_auth = True 
+    else:
+        is_auth = False   
+
+    return render(request, 'djangoapp/index.html', {'is_auth': is_auth})
+
 def static(request):
     return render(request, 'static.html', {})
 
