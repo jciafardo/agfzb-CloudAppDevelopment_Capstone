@@ -9,7 +9,9 @@ from django.contrib import messages
 from datetime import datetime
 import logging
 import json
-from users.views import register, logout_user
+from users.views import register, logout_user, login_user
+from django.http import HttpResponseRedirect
+
 
 
 # Get an instance of a logger
@@ -19,24 +21,31 @@ logger = logging.getLogger(__name__)
 # Create your views here.
 
 def index(response):
-    is_auth = None
-    is_log_out = None
-
-    
+        
     if response.method == 'POST':
-        if 'username' in response.POST or 'password' in response.POST:    
-            
-            if register(response) == True:
-                is_auth = True 
+        if 'username' in response.POST or 'password' in response.POST:
 
-            else:
-                is_auth = False
+            username = response.POST.get('username')
+            password = response.POST.get('password')
+            
+
+            if 'sign-up' in response.POST:    
+                register(response)
+                return HttpResponseRedirect('/djangoapp/sign-up')
+            if 'login' in response.POST:
+                login_user(response)
+                return HttpResponseRedirect('/djangoapp/login')
+
+                
 
         if 'logout' in response.POST:
             logout_user(response)
-            is_auth = False
-            return render(response, 'djangoapp/index.html', {'is_auth': is_auth})
-
+    
+    if response.user.is_authenticated:
+        is_auth = True 
+    else:
+        is_auth = False 
+    
     return render(response, 'djangoapp/index.html', {'is_auth': is_auth})
     
 
