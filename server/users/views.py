@@ -6,7 +6,7 @@ from django.contrib.auth import logout
 from django.views.decorators.csrf import csrf_protect
 
 def login_page(response):
-    pass
+    return render(response, 'login.html', {})
 
 def login_user(response):
     username = response.POST.get('username')
@@ -23,6 +23,8 @@ def login_user(response):
 
 
 # Register for account here
+def register_page(response):
+    return render(response, 'register.html', {})
 
 def register(response):
 
@@ -62,7 +64,12 @@ def register(response):
 
 
 # Confirm with user that they want to log out
+
+def logout_page(response):
+    return render(response, 'logout.html', {})
+
 def logout_user(response):
+
     logout(response)
             
 

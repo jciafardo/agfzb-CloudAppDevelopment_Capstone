@@ -36,7 +36,7 @@
                 {% csrf_token %}
 
                 {% if is_auth %}
-                <button class="btn btn-primary btn-sm mx-2" type="submit" name='logout'>Logout</button>
+                <a href="/djangoapp/logout"><button class="btn btn-primary btn-m mx-2" type="submit" name='logout'>Logout</button></a>
                 {% else %}
                     <input class="form-control" type="search" placeholder="Username" aria-label="Search" name="username">
                     <input class="form-control mx-2" type="search" placeholder="Password" aria-label="Search" name="password">

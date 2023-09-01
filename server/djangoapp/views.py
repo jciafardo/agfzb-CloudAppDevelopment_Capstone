@@ -25,13 +25,11 @@ def index(response):
     if response.method == 'POST':
         if 'username' in response.POST or 'password' in response.POST:
 
-            username = response.POST.get('username')
-            password = response.POST.get('password')
             
 
             if 'sign-up' in response.POST:    
                 register(response)
-                return HttpResponseRedirect('/djangoapp/sign-up')
+                return HttpResponseRedirect('/djangoapp/register')
             if 'login' in response.POST:
                 login_user(response)
                 return HttpResponseRedirect('/djangoapp/login')
@@ -40,6 +38,7 @@ def index(response):
 
         if 'logout' in response.POST:
             logout_user(response)
+            return HttpResponseRedirect('/djangoapp/logout')
     
     if response.user.is_authenticated:
         is_auth = True 
