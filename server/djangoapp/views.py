@@ -13,7 +13,7 @@ from users.views import register, logout_user, login_user
 from django.http import HttpResponseRedirect
 
 
-
+# delete this comment 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
