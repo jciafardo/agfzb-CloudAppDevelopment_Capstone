@@ -4,6 +4,29 @@ from django.utils.timezone import now
 
 # Create your models here.
 
+class carMake(models.Model):
+    name = models.CharField(max_length=30)
+    description = models.CharField(max_length=300)
+    def __str__(self):
+         return self.name
+
+class CarModel(models.Model):
+    carMake = models.ForeignKey(carMake, on_delete=models.CASCADE)
+    dealerId = models.IntegerField()
+    name = models.CharField(max_length=100)
+    Type = models.CharField(max_length=100, choices=(
+            ("Car", "Car"),
+            ("SUV", "SUV"),
+            ("Sedan", "Sedan"),
+            ("Pickup", "Pickup"),
+            
+        )
+    )
+    year = models.DateField()
+
+    def __str__(self):
+        return self.name
+
 # <HINT> Create a Car Make model `class CarMake(models.Model)`:
 # - Name
 # - Description
