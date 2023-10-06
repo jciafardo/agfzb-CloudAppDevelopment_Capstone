@@ -6,6 +6,9 @@ from django.contrib.auth import logout
 from django.views.decorators.csrf import csrf_protect
 
 def login_page(response):
+    if response.method == 'POST':
+        if username in response.POST:
+            login_user()
     return render(response, 'login.html', {})
 
 def login_user(response):
@@ -22,10 +25,10 @@ def login_user(response):
         error_msg = 'Username or password not found'
 
 
-# Register for account here
+# sign up page
 def register_page(response):
     return render(response, 'register.html', {})
-
+# sign up action 
 def register(response):
 
         username = response.POST.get('username')
